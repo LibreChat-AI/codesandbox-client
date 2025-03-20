@@ -1292,6 +1292,13 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/1100530?v=4",
       "profile": "https://github.com/Ku3mi41",
       "contributions": ["code", "test"]
+    },
+    {
+      "login": "plasticlobster",
+      "name": "Josh Mullin",
+      "avatar_url": "https://avatars.githubusercontent.com/u/527981?v=4",
+      "profile": "https://github.com/plasticlobster",
+      "contributions": ["code", "doc"]
     }
   ],
   "contributorsPerLine": 7,

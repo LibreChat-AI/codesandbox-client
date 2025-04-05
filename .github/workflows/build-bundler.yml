@@ -27,9 +27,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # Needed for creating releases
+      contents: write
       packages: write
-
+    
+    env:
+      NODE_ENV: development
+      NODE_OPTIONS: "--max-old-space-size=4096"
+    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -45,6 +49,9 @@ jobs:
 
       - name: Build dependencies
         run: yarn build:deps
+          
+      - name: Build common, components, and app packages
+        run: lerna run build --scope @codesandbox/common --scope @codesandbox/components --scope app
 
       - name: Build Sandpack
         run: yarn build:sandpack

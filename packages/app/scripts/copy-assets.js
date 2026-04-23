@@ -24,14 +24,13 @@ const assets = [
     from: 'packages/app/public',
     to: '',
   },
-  {
-    from: '.env',
-    to: '.env',
-  },
-  {
-    from: 'env.sh',
-    to: 'env.sh',
-  },
+  // NOTE: `.env` and `env.sh` are intentionally NOT copied into `www/`.
+  // `www/` is served publicly by nginx, so anything placed here is reachable
+  // from the internet (e.g. GET /.env would leak secrets). `env.sh` reads
+  // `.env` at container startup to generate `static/js/env-config.js`, which
+  // is the only file the browser needs. The Dockerfile places `.env` and
+  // `env.sh` under `/app` (outside the document root) and runs `env.sh` from
+  // there on container start.
 ].filter(Boolean);
 
 const rootPath = path.resolve(__dirname, '../../..');
